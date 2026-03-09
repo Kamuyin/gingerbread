@@ -9,27 +9,27 @@
 
 ; Before importing gingerbread.asm, you can specify the following options to affect the game header
 IF !DEF(GAME_NAME)
-GAME_NAME EQUS "GINGERBREAD"
+def GAME_NAME EQUS "GINGERBREAD"
 ENDC
 
 IF !DEF(GBC_SUPPORT)
-H_GBC_CODE EQU $0
+def H_GBC_CODE EQU $0
 ELSE
-H_GBC_CODE EQU $80
+def H_GBC_CODE EQU $80
 ENDC
 
 IF !DEF(SGB_SUPPORT)
-H_SGB_CODE EQU $0
+def H_SGB_CODE EQU $0
 ELSE
-H_SGB_CODE EQU $3
+def H_SGB_CODE EQU $3
 ENDC
 
 IF !DEF(ROM_SIZE)
-ROM_SIZE EQU 0
+def ROM_SIZE EQU 0
 ENDC
 
 IF !DEF(RAM_SIZE)
-RAM_SIZE EQU 1
+def RAM_SIZE EQU 1
 ENDC
 
 SECTION "header",ROM0[$0104]
@@ -60,140 +60,140 @@ ENDR
 ; --- Hardware constants ---
 
 ; General
-ROM_BANK_SWITCH     EQU $2000
-SAVEDATA            EQU $0000
-MBC5_RAMB           EQU $4000
+def ROM_BANK_SWITCH     EQU $2000
+def SAVEDATA            EQU $0000
+def MBC5_RAMB           EQU $4000
 
 ; Key status
-KEY_START   EQU %10000000
-KEY_SELECT  EQU %01000000
-KEY_B       EQU %00100000
-KEY_A       EQU %00010000
-KEY_DOWN    EQU %00001000
-KEY_UP      EQU %00000100
-KEY_LEFT    EQU %00000010
-KEY_RIGHT   EQU %00000001
+def KEY_START   EQU %10000000
+def KEY_SELECT  EQU %01000000
+def KEY_B       EQU %00100000
+def KEY_A       EQU %00010000
+def KEY_DOWN    EQU %00001000
+def KEY_UP      EQU %00000100
+def KEY_LEFT    EQU %00000010
+def KEY_RIGHT   EQU %00000001
 
 ; Graphics palettes (monochrome)
-BG_PALETTE       EQU $FF47
-SPRITE_PALETTE_1 EQU $FF48
-SPRITE_PALETTE_2 EQU $FF49
+def BG_PALETTE       EQU $FF47
+def SPRITE_PALETTE_1 EQU $FF48
+def SPRITE_PALETTE_2 EQU $FF49
 
 ; GBC palettes
-GBC_BG_PALETTE_INDEX      EQU $FF68
-GBC_BG_PALETTE            EQU $FF69
-GBC_SPRITE_PALETTE_INDEX  EQU $FF6A
-GBC_SPRITE_PALETTE        EQU $FF6B
+def GBC_BG_PALETTE_INDEX      EQU $FF68
+def GBC_BG_PALETTE            EQU $FF69
+def GBC_SPRITE_PALETTE_INDEX  EQU $FF6A
+def GBC_SPRITE_PALETTE        EQU $FF6B
 
-GBC_VRAM_BANK_SWITCH    EQU $FF4F
+def GBC_VRAM_BANK_SWITCH    EQU $FF4F
 
 ; Scrolling: Set these to nonzero values to scroll the screen across the 256x256 rendering surface
-SCROLL_X         EQU $FF43
-SCROLL_Y         EQU $FF42
+def SCROLL_X         EQU $FF43
+def SCROLL_Y         EQU $FF42
 ; They see me scrollin'... They hatin'...
 
 ; Memory ranges
-TILEDATA_START              EQU $8000 ; up to $97FF
-BACKGROUND_MAPDATA_START    EQU $9800 ; up to $9BFF
-WINDOW_MAPDATA_START        EQU $9C00 ; up to $9FFF
+def TILEDATA_START              EQU $8000 ; up to $97FF
+def BACKGROUND_MAPDATA_START    EQU $9800 ; up to $9BFF
+def WINDOW_MAPDATA_START        EQU $9C00 ; up to $9FFF
 
-SAVEDATA_START     EQU $A000 ; up to $BFFF
+def SAVEDATA_START     EQU $A000 ; up to $BFFF
 
-RAM_START          EQU $C000 ; up to $E000, only write to data after USER_RAM_START as GingerBread uses some RAM before this for sprites etc.
-SPRITES_START      EQU $C100 ; up to $C1A0
-USER_RAM_START     EQU $C200 ; up to $E000
+def RAM_START          EQU $C000 ; up to $E000, only write to data after USER_RAM_START as GingerBread uses some RAM before this for sprites etc.
+def SPRITES_START      EQU $C100 ; up to $C1A0
+def USER_RAM_START     EQU $C200 ; up to $E000
 
-HRAM_START         EQU $F800 ; up to $FFFE
-OAMRAM_START       EQU $FE00 ; up to $FE9F
-AUD3WAVERAM_START  EQU $FF30 ; $FF30-$FF3F
+def HRAM_START         EQU $F800 ; up to $FFFE
+def OAMRAM_START       EQU $FE00 ; up to $FE9F
+def AUD3WAVERAM_START  EQU $FF30 ; $FF30-$FF3F
 
-DMACODE_START   EQU $FF80
-SPRITES_LENGTH  EQU $A0
+def DMACODE_START   EQU $FF80
+def SPRITES_LENGTH  EQU $A0
 
-STATF_LYC     EQU  %01000000 ; LYCEQULY Coincidence (Selectable)
-STATF_MODE10  EQU  %00100000 ; Mode 10
-STATF_MODE01  EQU  %00010000 ; Mode 01 (V-Blank)
-STATF_MODE00  EQU  %00001000 ; Mode 00 (H-Blank)
-STATF_LYCF    EQU  %00000100 ; Coincidence Flag
-STATF_HB      EQU  %00000000 ; H-Blank
-STATF_VB      EQU  %00000001 ; V-Blank
-STATF_OAM     EQU  %00000010 ; OAM-RAM is used by system
-STATF_LCD     EQU  %00000011 ; Both OAM and VRAM used by system
-STATF_BUSY    EQU  %00000010 ; When set, VRAM access is unsafe
+def STATF_LYC     EQU  %01000000 ; LYCEQULY Coincidence (Selectable)
+def STATF_MODE10  EQU  %00100000 ; Mode 10
+def STATF_MODE01  EQU  %00010000 ; Mode 01 (V-Blank)
+def STATF_MODE00  EQU  %00001000 ; Mode 00 (H-Blank)
+def STATF_LYCF    EQU  %00000100 ; Coincidence Flag
+def STATF_HB      EQU  %00000000 ; H-Blank
+def STATF_VB      EQU  %00000001 ; V-Blank
+def STATF_OAM     EQU  %00000010 ; OAM-RAM is used by system
+def STATF_LCD     EQU  %00000011 ; Both OAM and VRAM used by system
+def STATF_BUSY    EQU  %00000010 ; When set, VRAM access is unsafe
 
-rSTAT EQU $FF41
+def rSTAT EQU $FF41
 
 ; Interrupts
-rIF EQU $FF0F
-rIE EQU $FFFF
+def rIF EQU $FF0F
+def rIE EQU $FFFF
 
-IEF_HILO    EQU  %00010000 ; Transition from High to Low of Pin number P10-P13
-IEF_SERIAL  EQU  %00001000 ; Serial I/O transfer end
-IEF_TIMER   EQU  %00000100 ; Timer Overflow
-IEF_LCDC    EQU  %00000010 ; LCDC
-IEF_VBLANK  EQU  %00000001 ; V-Blank
+def IEF_HILO    EQU  %00010000 ; Transition from High to Low of Pin number P10-P13
+def IEF_SERIAL  EQU  %00001000 ; Serial I/O transfer end
+def IEF_TIMER   EQU  %00000100 ; Timer Overflow
+def IEF_LCDC    EQU  %00000010 ; LCDC
+def IEF_VBLANK  EQU  %00000001 ; V-Blank
 
 ; LCD stuff
-rLCDC EQU $FF40
+def rLCDC EQU $FF40
 
-LCDCF_OFF     EQU  %00000000 ; LCD Control Operation
-LCDCF_ON      EQU  %10000000 ; LCD Control Operation
-LCDCF_WIN9800 EQU  %00000000 ; Window Tile Map Display Select
-LCDCF_WIN9C00 EQU  %01000000 ; Window Tile Map Display Select
-LCDCF_WINOFF  EQU  %00000000 ; Window Display
-LCDCF_WINON   EQU  %00100000 ; Window Display
-LCDCF_BG8800  EQU  %00000000 ; BG & Window Tile Data Select
-LCDCF_BG8000  EQU  %00010000 ; BG & Window Tile Data Select
-LCDCF_BG9800  EQU  %00000000 ; BG Tile Map Display Select
-LCDCF_BG9C00  EQU  %00001000 ; BG Tile Map Display Select
-LCDCF_OBJ8    EQU  %00000000 ; OBJ Construction
-LCDCF_OBJ16   EQU  %00000100 ; OBJ Construction
-LCDCF_OBJOFF  EQU  %00000000 ; OBJ Display
-LCDCF_OBJON   EQU  %00000010 ; OBJ Display
-LCDCF_BGOFF   EQU  %00000000 ; BG Display
-LCDCF_BGON    EQU  %00000001 ; BG Display
+def LCDCF_OFF     EQU  %00000000 ; LCD Control Operation
+def LCDCF_ON      EQU  %10000000 ; LCD Control Operation
+def LCDCF_WIN9800 EQU  %00000000 ; Window Tile Map Display Select
+def LCDCF_WIN9C00 EQU  %01000000 ; Window Tile Map Display Select
+def LCDCF_WINOFF  EQU  %00000000 ; Window Display
+def LCDCF_WINON   EQU  %00100000 ; Window Display
+def LCDCF_BG8800  EQU  %00000000 ; BG & Window Tile Data Select
+def LCDCF_BG8000  EQU  %00010000 ; BG & Window Tile Data Select
+def LCDCF_BG9800  EQU  %00000000 ; BG Tile Map Display Select
+def LCDCF_BG9C00  EQU  %00001000 ; BG Tile Map Display Select
+def LCDCF_OBJ8    EQU  %00000000 ; OBJ Construction
+def LCDCF_OBJ16   EQU  %00000100 ; OBJ Construction
+def LCDCF_OBJOFF  EQU  %00000000 ; OBJ Display
+def LCDCF_OBJON   EQU  %00000010 ; OBJ Display
+def LCDCF_BGOFF   EQU  %00000000 ; BG Display
+def LCDCF_BGON    EQU  %00000001 ; BG Display
 
 ; Sound stuff
-SOUND_VOLUME    EQU $FF24
-SOUND_OUTPUTS   EQU $FF25
-SOUND_ONOFF     EQU $FF26
+def SOUND_VOLUME    EQU $FF24
+def SOUND_OUTPUTS   EQU $FF25
+def SOUND_ONOFF     EQU $FF26
 
 ; Channel 1 (square with sweep and enevelope effects)
-SOUND_CH1_START     EQU $FF10 ; bit 7: unused, bits 6-4: sweep time, bit 3: sweep frequency increase/decrease, bits 2-0: number of sweep shifts
-SOUND_CH1_LENGTH    EQU $FF11 ; bits 7-6: wave duty, bits 5-0: length of sound data
-SOUND_CH1_ENVELOPE  EQU $FF12 ; bits 7-4: start value for envelope, bit 3: envelope decrease/increase, bits 2-0: number of envelope sweeps
-SOUND_CH1_LOWFREQ   EQU $FF13 ; bits 7-0: lower 8 bits of the sound frequency
-SOUND_CH1_HIGHFREQ  EQU $FF14 ; bit 7: restart channel, bit 6: use length, bits 5-3: unused, bits 2-0: highest 3 bits of frequency
+def SOUND_CH1_START     EQU $FF10 ; bit 7: unused, bits 6-4: sweep time, bit 3: sweep frequency increase/decrease, bits 2-0: number of sweep shifts
+def SOUND_CH1_LENGTH    EQU $FF11 ; bits 7-6: wave duty, bits 5-0: length of sound data
+def SOUND_CH1_ENVELOPE  EQU $FF12 ; bits 7-4: start value for envelope, bit 3: envelope decrease/increase, bits 2-0: number of envelope sweeps
+def SOUND_CH1_LOWFREQ   EQU $FF13 ; bits 7-0: lower 8 bits of the sound frequency
+def SOUND_CH1_HIGHFREQ  EQU $FF14 ; bit 7: restart channel, bit 6: use length, bits 5-3: unused, bits 2-0: highest 3 bits of frequency
 
 ; Channel 2 (square with enevelope effect, with no sweep effect)
-SOUND_CH2_START     EQU $FF15 ; Not used but you can write zeroes here
-SOUND_CH2_LENGTH    EQU $FF16 ; bits 7-6: wave duty, bits 5-0: length of sound data
-SOUND_CH2_ENVELOPE  EQU $FF17 ; bits 7-4: start value for envelope, bit 3: envelope decrease/increase, bits 2-0: number of envelope sweeps
-SOUND_CH2_LOWFREQ   EQU $FF18 ; bits 7-0: lower 8 bits of the sound frequency
-SOUND_CH2_HIGHFREQ  EQU $FF19 ; bit 7: restart channel, bit 6: use length, bits 5-3: unused, bits 2-0: highest 3 bits of frequency
+def SOUND_CH2_START     EQU $FF15 ; Not used but you can write zeroes here
+def SOUND_CH2_LENGTH    EQU $FF16 ; bits 7-6: wave duty, bits 5-0: length of sound data
+def SOUND_CH2_ENVELOPE  EQU $FF17 ; bits 7-4: start value for envelope, bit 3: envelope decrease/increase, bits 2-0: number of envelope sweeps
+def SOUND_CH2_LOWFREQ   EQU $FF18 ; bits 7-0: lower 8 bits of the sound frequency
+def SOUND_CH2_HIGHFREQ  EQU $FF19 ; bit 7: restart channel, bit 6: use length, bits 5-3: unused, bits 2-0: highest 3 bits of frequency
 
 ; Channel 3 (custom wave)
-SOUND_CH3_START     EQU $FF1A ; bit 7: on/off, bits 6-0: unused
-SOUND_CH3_LENGTH    EQU $FF1B ; bits 7-0: length of sound
-SOUND_CH3_VOLUME    EQU $FF1C ; bits 6-5: audio volume (%00 is mute, %01 is loudest, %10 is pretty quiet and %11 is very quiet)
-SOUND_CH3_LOWFREQ   EQU $FF1D ; bits 7-0: lower 8 bits of the sound frequency
-SOUND_CH3_HIGHFREQ  EQU $FF1E ; bit 7: restart channel, bit 6: use length, bits 5-3: unused, bits 2-0: highest 3 bits of frequency
+def SOUND_CH3_START     EQU $FF1A ; bit 7: on/off, bits 6-0: unused
+def SOUND_CH3_LENGTH    EQU $FF1B ; bits 7-0: length of sound
+def SOUND_CH3_VOLUME    EQU $FF1C ; bits 6-5: audio volume (%00 is mute, %01 is loudest, %10 is pretty quiet and %11 is very quiet)
+def SOUND_CH3_LOWFREQ   EQU $FF1D ; bits 7-0: lower 8 bits of the sound frequency
+def SOUND_CH3_HIGHFREQ  EQU $FF1E ; bit 7: restart channel, bit 6: use length, bits 5-3: unused, bits 2-0: highest 3 bits of frequency
 
 ; Channel 4 (noise)
-SOUND_CH4_START     EQU $FF1F ; Not used but you can write zeroes here
-SOUND_CH4_LENGTH    EQU $FF20 ; bits 5-0: length of sound
-SOUND_CH4_ENVELOPE  EQU $FF21 ; bits 7-4: start value for envelope, bit 3: envelope decrease/increase, bits 2-0: number of envelope sweeps
-SOUND_CH4_POLY      EQU $FF22 ; bits 7-4: polynomial counter, bit 3: number of steps (15 or 7), bits 2-0: ratio of frequency division (%000 gives highest frequency, %111 the lowest)
-SOUND_CH4_OPTIONS   EQU $FF23 ; bit 7: restart channel, bit 6: use length
+def SOUND_CH4_START     EQU $FF1F ; Not used but you can write zeroes here
+def SOUND_CH4_LENGTH    EQU $FF20 ; bits 5-0: length of sound
+def SOUND_CH4_ENVELOPE  EQU $FF21 ; bits 7-4: start value for envelope, bit 3: envelope decrease/increase, bits 2-0: number of envelope sweeps
+def SOUND_CH4_POLY      EQU $FF22 ; bits 7-4: polynomial counter, bit 3: number of steps (15 or 7), bits 2-0: ratio of frequency division (%000 gives highest frequency, %111 the lowest)
+def SOUND_CH4_OPTIONS   EQU $FF23 ; bit 7: restart channel, bit 6: use length
 
 ; Wave table for Channel 3
-SOUND_WAVE_TABLE_START EQU $FF30
-SOUND_WAVE_TABLE_STOP  EQU $FF3F
+def SOUND_WAVE_TABLE_START EQU $FF30
+def SOUND_WAVE_TABLE_STOP  EQU $FF3F
 
 ; O RLY?
-rLY EQU $FF44
+def rLY EQU $FF44
 
-rDMA  EQU $FF46
+def rDMA  EQU $FF46
 
 ; --- GingerBread RAM variables ---
 ; GingerBread writes a few variables in RAM between $C100 and $C1FF. Let your own RAM usage start at $C200 to make sure none of your code messes with GingerBread
@@ -305,13 +305,13 @@ PlaySoundHL:
     ret
 
 Section "GingerBreadMemory",ROM0
-WaitForNonBusyLCD: MACRO
+MACRO WaitForNonBusyLCD
     ld  a,[rSTAT]
     and STATF_BUSY
     jr  nz,@-4     ; Jumps up 4 bytes in the code (two lines in this case)
 ENDM
 
-WaitForNonBusyLCDSafeA: MACRO
+MACRO WaitForNonBusyLCDSafeA
     push af
     WaitForNonBusyLCD
     pop af
@@ -733,7 +733,7 @@ IF DEF(GBC_SUPPORT)
 
 SECTION "GBC commands",ROM0
 
-GBCEarlyExit: MACRO
+MACRO GBCEarlyExit
     ld a, [RUNNING_ON_GBC]
     cp 0
     ret z
@@ -797,12 +797,12 @@ ENDC ; End of GBC functionality
 IF DEF(SGB_SUPPORT)
 
 SECTION "SGB Messages",ROMX,BANK[1]
-SGB_OUT_ADDRESS EQU $FF00
+def SGB_OUT_ADDRESS EQU $FF00
 
-SGB_SEND_ZERO   EQU %00100000
-SGB_SEND_ONE    EQU %00010000
-SGB_SEND_RESET  EQU %00000000
-SGB_SEND_NULL   EQU %00110000
+def SGB_SEND_ZERO   EQU %00100000
+def SGB_SEND_ONE    EQU %00010000
+def SGB_SEND_RESET  EQU %00000000
+def SGB_SEND_NULL   EQU %00110000
 
 SGB_FREEZE:
 DB %10111001    ; MASK_EN command, length one
@@ -971,7 +971,7 @@ CheckIfSGB:
 .CISGB_end
     ret
 
-SGBEarlyExit: MACRO
+MACRO SGBEarlyExit
     ld a, [RUNNING_ON_SGB]
     cp 0
     ret z
@@ -1006,7 +1006,7 @@ SGBStrangeInit:
 
     ret
 
-SGBBorderTransferMacro: MACRO
+MACRO SGBBorderTransferMacro
     di
     call StopLCD
 
